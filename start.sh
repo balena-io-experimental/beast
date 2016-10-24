@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 IMAGE="ato.jpg"
 
 echo "Rendering image"
