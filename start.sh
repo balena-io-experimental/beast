@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="merck.jpg"
+IMAGE="image.png"
 
 echo "Rendering image"
 
