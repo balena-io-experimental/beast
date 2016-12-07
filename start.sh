@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="ericsson.png"
+IMAGE="image.png"
 
 echo "Rendering image"
 
