@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="tibco.jpg"
 
 echo "Rendering image"
 
