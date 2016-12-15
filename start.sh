@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="amway.png"
 
 echo "Rendering image"
 
