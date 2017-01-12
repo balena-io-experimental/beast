@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="honeywell.png"
+IMAGE="ato.png"
 
 echo "Rendering image"
 
