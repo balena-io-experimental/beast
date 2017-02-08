@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="cisco.png"
 
 echo "Rendering image"
 
