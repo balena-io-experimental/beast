@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="tri.jpg"
 
 echo "Rendering image"
 
