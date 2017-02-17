@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="cree.png"
 
 echo "Rendering image"
 
