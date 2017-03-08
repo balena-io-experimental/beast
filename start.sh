@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="gehealth.jpg"
 
 echo "Rendering image"
 
