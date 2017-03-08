@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="resin.png"
+IMAGE="image.png"
 
 echo "Rendering image"
 
