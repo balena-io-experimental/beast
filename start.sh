@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="slb.jpg"
 
 echo "Rendering image"
 
