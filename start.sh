@@ -1,5 +1,6 @@
 #!/bin/bash
 
+exit 1
 IMAGE="slb.jpg"
 
 echo "Rendering image"
