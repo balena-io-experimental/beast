@@ -1,7 +1,6 @@
 #!/bin/bash
 
-IMAGE="dc.png"
-
+IMAGE="image.png"
 
 echo "Rendering image"
 
