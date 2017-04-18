@@ -2,6 +2,7 @@
 
 IMAGE="image.png"
 
+
 echo "Rendering image"
 
 ROTATE=${ROTATE:-0}
