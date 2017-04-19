@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="docker.png"
+IMAGE="dc.png"
 
 echo "Rendering image"
 
