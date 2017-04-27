@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="nvidia.png"
 
 echo "Rendering image"
 
