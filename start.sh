@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="siemens.jpg"
+IMAGE="image.png"
 
 echo "Rendering image"
 
