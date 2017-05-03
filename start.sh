@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="uptake.jpg"
+IMAGE="image.png"
 
 echo "Rendering image"
 
