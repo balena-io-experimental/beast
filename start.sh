@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="qa.jpg"
 
 echo "Rendering image"
 
