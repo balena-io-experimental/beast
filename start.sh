@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="mit.jpg"
 
 echo "Rendering image"
 
