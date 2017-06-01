@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="bc.png"
+IMAGE="image.png"
 
 echo "Rendering image"
 
