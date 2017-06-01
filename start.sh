@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="bug.png"
+IMAGE="image.png"
 
 echo "Rendering image"
 
