@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="devices.jpg"
+IMAGE="devices.png"
 
 echo "Rendering image"
 
