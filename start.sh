@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="ai.png"
 
 echo "Rendering image"
 
