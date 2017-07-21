@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="download.jpg"
 
 echo "Rendering image"
 
