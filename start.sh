@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="bloor.png"
+IMAGE="image.png"
 
 echo "Rendering image"
 
