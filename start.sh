@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="tcs.jpg"
 
 echo "Rendering image"
 
