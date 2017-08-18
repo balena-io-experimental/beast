@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="image.png"
+IMAGE="cycle.jpg"
 
 echo "Rendering image"
 
