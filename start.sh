@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE="oktoberfest.jpg"
+IMAGE="black.png"
 
 echo "Rendering image"
 
