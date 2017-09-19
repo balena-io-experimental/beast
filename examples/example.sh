@@ -1,1 +1,1 @@
-node ./examples/${EXAMPLE:-readme}.coffee
+coffee ./examples/${EXAMPLE:-readme}.coffee
