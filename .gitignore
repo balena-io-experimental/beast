@@ -2,5 +2,8 @@
 *.iml
 /.idea
 
+# Built files
+/node_modules
+
 # Is package-lock.json stable and adopted yet?
 package-lock.json

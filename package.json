@@ -1,0 +1,27 @@
+{
+  "name": "beast",
+  "version": "0.0.1",
+  "description": "Beast demo",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resin-io-projects/beast.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/resin-io-projects/beast/issues"
+  },
+  "homepage": "https://github.com/resin-io-projects/beast#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "coffee-script": "^1.12.7",
+    "lodash": "^4.17.4",
+    "pitft": "^0.0.15",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  }
+}
