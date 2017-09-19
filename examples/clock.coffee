@@ -45,8 +45,13 @@ update = ->
     catch error
         console.log(error)
 
+    if process.env.TIMEZONE?
+        rightNow = new moment()
+
+    else
+        rightNow = new moment().tz(process.env.TIMEZONE)
+
     fb.color(0, 0, 0)
-    rightNow = new moment()
     rotate = 180;
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015)
     hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05)
