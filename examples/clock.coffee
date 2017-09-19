@@ -11,7 +11,7 @@ RA = 180/Math.PI
 
 drawDial = ->
     fb.color(1, 1, 1)
-    fb.circle(xMax/2, yMax/2, radius);
+    fb.circle(xMax/2, yMax/2, radius)
 
     fb.color(0, 0, 0);
     for a in [0...360] by 6
@@ -37,20 +37,20 @@ hand = (_fb, x, y, angle, length, width) ->
     fb.line(x0, y0, x1, y1, width)
 
 update = ->
-    rotate = 180;
+    rotate = 180
 
     fb.color(1, 1, 1)
-    fb.circle(xMax/2, yMax/2, radius * 0.85);
+    fb.circle(xMax/2, yMax/2, radius * 0.85)
     try
         fb.image(xMax/2 - 75, yMax/2 + radius * 0.50 - 200, "examples/image.png")
     catch error
         console.log(error)
 
-    if process.env.TIMEZONE?
+    try
         rightNow = new moment().tz(process.env.TIMEZONE)
         fb.font("fantasy", 40)
         fb.text(xMax/2, yMax/3, process.env.TIMEZONE?, true, rotate)
-    else
+    catch
         rightNow = new moment()
 
     fb.color(0, 0, 0)
