@@ -46,17 +46,19 @@ update = ->
     catch error
         console.log(error)
 
+    fb.color(0, 0, 0)
+
     try
         rightNow = new moment().tz(process.env.TIMEZONE)
         fb.font("fantasy", 40)
         fb.text(xMax/2, yMax/3, process.env.TIMEZONE?, true, rotate)
-    catch
+    catch error
+        console.log(error)
         rightNow = new moment()
 
-    fb.color(0, 0, 0)
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015)
     hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05)
-    hand(fb, 0, 0, (rightNow.hours()/12 * 360) + rotate, radius * 0.6, radius * 0.05)
+    hand(fb, 0, 0, ((rightNow.hours() + rightNow.minutes()/60)/12 * 360) + rotate, radius * 0.6, radius * 0.05)
 
     fb.blit()
 
