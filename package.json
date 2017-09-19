@@ -18,7 +18,6 @@
   "homepage": "https://github.com/resin-io-projects/beast#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "coffeescript": "^2.0.0",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "moment-timezone": "^0.5.13",

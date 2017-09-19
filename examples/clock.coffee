@@ -37,6 +37,7 @@ hand = (_fb, x, y, angle, length, width) ->
     fb.line(x0, y0, x1, y1, width)
 
 update = ->
+    rotate = 180;
 
     fb.color(1, 1, 1)
     fb.circle(xMax/2, yMax/2, radius * 0.85);
@@ -47,12 +48,12 @@ update = ->
 
     if process.env.TIMEZONE?
         rightNow = new moment()
-
+        fb.font("fantasy", 40)
+        fb.text(xMax/2, yMax/3, process.env.TIMEZONE?, true, rotate)
     else
         rightNow = new moment().tz(process.env.TIMEZONE)
 
     fb.color(0, 0, 0)
-    rotate = 180;
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015)
     hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05)
     hand(fb, 0, 0, (rightNow.hours()/12 * 360) + rotate, radius * 0.6, radius * 0.05)
