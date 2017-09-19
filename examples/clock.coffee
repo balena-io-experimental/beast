@@ -1,6 +1,5 @@
 pitft = require("pitft")
 moment = require("moment")
-# Returns a framebuffer in double buffering mode
 fb = pitft("/dev/fb1", true)
 
 fb.clear()
@@ -39,7 +38,6 @@ hand = (_fb, x, y, angle, length, width) ->
 
 update = () ->
 
-    # Draw the clock face
     fb.color(1, 1, 1)
     fb.circle(xMax/2, yMax/2, radius * 0.85);
     try
@@ -47,7 +45,6 @@ update = () ->
     catch error
         console.log(error)
 
-    # Draw each clock hand
     fb.color(0, 0, 0)
     rightNow = new moment()
     rotate = 180;
@@ -55,7 +52,6 @@ update = () ->
     hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05)
     hand(fb, 0, 0, (rightNow.hours()/12 * 360) + rotate, radius * 0.6, radius * 0.05)
 
-    # Transfer the back buffer to the screen buffer
     fb.blit()
 
 drawDial()

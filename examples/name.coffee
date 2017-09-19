@@ -1,4 +1,4 @@
-fb = require("pitft")("/dev/fb1");
+fb = require("pitft")("/dev/fb1")
 
 fb.clear()
 
