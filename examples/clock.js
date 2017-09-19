@@ -46,7 +46,6 @@ var hand = function(_fb, x, y, angle, length, width) {
 }
 
 var update = function() {
-    var rotate = 180;
     var now = new Date(),
         midnight = new Date(
             now.getFullYear(),
@@ -60,18 +59,17 @@ var update = function() {
     fb.color(1, 1, 1);
     fb.circle(xMax/2, yMax/2, radius * 0.85);
     try {
-        fb.image(xMax/2 - 70, yMax/2 + radius * 0.50 - 90, "examples/image.png");
+        fb.image(xMax/2 - 75, yMax/2 + radius * 0.50 - 150, "examples/image.png");
     }
     catch(error) {
         console.log(error);
     }
     fb.color(1, 0, 0);
+    var rotate = 180;
     hand(fb, 0, 0, (hours/12 * 360) + rotate, radius * 0.6, radius * 0.05);
     hand(fb, 0, 0, (minutes/60 * 360) + rotate, radius * 0.8, radius * 0.05);
     fb.color(0, 0, 0);
     hand(fb, 0, 0, (seconds/60 * 360) + rotate, radius * 0.8, radius * 0.015);
-    fb.color(1, 0, 0);
-    fb.circle(xMax/2, yMax/2, radius * 0.075);
     fb.blit(); // Transfer the back buffer to the screen buffer
 };
 
