@@ -8,4 +8,4 @@ RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean --force &
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-CMD node ./examples/buttons.js
+CMD node ./examples/clock.js
