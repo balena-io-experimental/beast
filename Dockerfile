@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:jessie-20160511
 
-RUN apt-get update && apt-get -y install fbi imagemagick libcairo2-dev nodejs npm node-semver build-essential
+RUN apt-get update && apt-get -y install fbi imagemagick libcairo2-dev nodejs-legacy nodejs npm node-semver build-essential
 
 RUN npm install npm --global
 
