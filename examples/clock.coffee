@@ -47,15 +47,14 @@ update = ->
         console.log(error)
 
     fb.color(0, 0, 0)
-
-    try
+    if process.env.TIMEZONE?
         rightNow = new moment().tz(process.env.TIMEZONE)
-        fb.font("fantasy", 30)
+        fb.font("fantasy", 25)
         fb.text(xMax/2, yMax*0.7, process.env.TIMEZONE, true, rotate)
-    catch error
-        console.log(error)
+    else
         rightNow = new moment()
 
+    fb.color(0, 0, 0)
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015)
     hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05)
     hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
