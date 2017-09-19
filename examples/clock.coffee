@@ -1,5 +1,5 @@
 pitft = require("pitft")
-moment = require("moment")
+moment = require("moment-timezone")
 fb = pitft("/dev/fb1", true)
 
 fb.clear()
