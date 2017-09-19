@@ -2,7 +2,7 @@ FROM resin/rpi-raspbian:jessie-20160511
 
 RUN apt-get update && apt-get -y install fbi imagemagick libcairo2-dev
 
-RUN JOBS-MAX npm install --production --unsafe-perm && npm cache clean --force && rm -rf /tmp/*
+RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean --force && rm -rf /tmp/*
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
