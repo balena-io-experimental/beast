@@ -47,11 +47,11 @@ update = ->
         console.log(error)
 
     if process.env.TIMEZONE?
-        rightNow = new moment()
+        rightNow = new moment().tz(process.env.TIMEZONE)
         fb.font("fantasy", 40)
         fb.text(xMax/2, yMax/3, process.env.TIMEZONE?, true, rotate)
     else
-        rightNow = new moment().tz(process.env.TIMEZONE)
+        rightNow = new moment()
 
     fb.color(0, 0, 0)
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015)
