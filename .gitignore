@@ -5,5 +5,8 @@
 # Built files
 /node_modules
 
+# Sneaky sneaky
+/_dev_notes
+
 # Is package-lock.json stable and adopted yet?
 package-lock.json
