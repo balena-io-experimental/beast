@@ -46,31 +46,28 @@ var hand = function(_fb, x, y, angle, length, width) {
 }
 
 var update = function() {
-    var now = new Date(),
-        midnight = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            0,0,0),
-        hours = (now.getTime() - midnight.getTime())/1000/60/60,
-        minutes = (hours * 60) % 60;
-    seconds = parseInt((minutes * 60) % 60);
 
+    // Draw the clock face
     fb.color(1, 1, 1);
     fb.circle(xMax/2, yMax/2, radius * 0.85);
     try {
-        fb.image(xMax/2 - 75, yMax/2 + radius * 0.50 - 150, "examples/image.png");
+        fb.image(xMax/2 - 75, yMax/2 + radius * 0.50 - 200, "examples/image.png");
     }
     catch(error) {
         console.log(error);
     }
+
+    // Draw each clock hand
     fb.color(1, 0, 0);
+    var rightNow = new Moment();
     var rotate = 180;
-    hand(fb, 0, 0, (hours/12 * 360) + rotate, radius * 0.6, radius * 0.05);
-    hand(fb, 0, 0, (minutes/60 * 360) + rotate, radius * 0.8, radius * 0.05);
+    hand(fb, 0, 0, (rightNow.hours()/12 * 360) + rotate, radius * 0.6, radius * 0.05);
+    hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05);
     fb.color(0, 0, 0);
-    hand(fb, 0, 0, (seconds/60 * 360) + rotate, radius * 0.8, radius * 0.015);
-    fb.blit(); // Transfer the back buffer to the screen buffer
+    hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015);
+
+    // Transfer the back buffer to the screen buffer
+    fb.blit();
 };
 
 drawDial();
