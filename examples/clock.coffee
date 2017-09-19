@@ -9,7 +9,7 @@ yMax = fb.size().height
 radius = yMax/2 - 10
 RA = 180/Math.PI
 
-drawDial = () ->
+drawDial = ->
     fb.color(1, 1, 1)
     fb.circle(xMax/2, yMax/2, radius);
 
@@ -36,7 +36,7 @@ hand = (_fb, x, y, angle, length, width) ->
 
     fb.line(x0, y0, x1, y1, width)
 
-update = () ->
+update = ->
 
     fb.color(1, 1, 1)
     fb.circle(xMax/2, yMax/2, radius * 0.85);
