@@ -62,8 +62,8 @@ var update = function() {
     fb.color(1, 0, 0);
     var rightNow = new moment();
     var rotate = 180;
-    fb.color(0, 0, 0);
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015);
+    fb.color(0, 0, 0);
     hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05);
     hand(fb, 0, 0, (rightNow.hours()/12 * 360) + rotate, radius * 0.6, radius * 0.05);
 
