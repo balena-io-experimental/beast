@@ -1,0 +1,6 @@
+# IDE Files
+*.iml
+/.idea
+
+# Is package-lock.json stable and adopted yet?
+package-lock.json
