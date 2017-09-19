@@ -59,7 +59,7 @@ var update = function() {
     fb.color(1, 1, 1);
     fb.circle(xMax/2, yMax/2, radius * 0.85);
     try {
-        fb.image(xMax/2 - 60, yMax/2 + radius * 0.50 - 60, "examples/image.png");
+        fb.image(xMax/2 - 65, yMax/2 + radius * 0.50 - 90, "examples/image.png");
     }
     catch(error) {
         console.log(error);
