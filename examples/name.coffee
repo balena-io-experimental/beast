@@ -2,8 +2,8 @@ fb = require("pitft")("/dev/fb1");
 
 fb.clear()
 
-xMax = fb.size.width()
-yMax = fb.size.height()
+xMax = fb.size().width
+yMax = fb.size().height
 
 fb.color(1, 1, 1)
 fb.font("fantasy", 12)
