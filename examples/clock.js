@@ -1,4 +1,5 @@
 var pitft = require("pitft");
+var moment = require("moment");
 
 var fb = pitft("/dev/fb1", true); // Returns a framebuffer in double buffering mode
 
@@ -59,12 +60,12 @@ var update = function() {
 
     // Draw each clock hand
     fb.color(1, 0, 0);
-    var rightNow = new Moment();
+    var rightNow = new moment();
     var rotate = 180;
-    hand(fb, 0, 0, (rightNow.hours()/12 * 360) + rotate, radius * 0.6, radius * 0.05);
-    hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05);
     fb.color(0, 0, 0);
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015);
+    hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05);
+    hand(fb, 0, 0, (rightNow.hours()/12 * 360) + rotate, radius * 0.6, radius * 0.05);
 
     // Transfer the back buffer to the screen buffer
     fb.blit();
