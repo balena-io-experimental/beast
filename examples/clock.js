@@ -1,4 +1,4 @@
-var pitft = require("../pitft");
+var pitft = require("pitft");
 
 var fb = pitft("/dev/fb1", true); // Returns a framebuffer in double buffering mode
 

@@ -1,4 +1,4 @@
-var touchscreen = require("../index.js");
+var touchscreen = require("pitft-touch");
 var fb = require("pitft")("/dev/fb1", true); // run 'npm install pitft' in the example directory
 
 var gui = {};
