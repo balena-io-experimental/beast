@@ -1,1 +1,1 @@
-coffee ./examples/${EXAMPLE:-name}.coffee
+node ./examples/${EXAMPLE:-name}.coffee
