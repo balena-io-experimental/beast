@@ -19,6 +19,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "coffee-script": "^1.12.7",
+    "express": "^4.15.4",
     "lodash": "^4.17.4",
     "pitft": "^0.0.15",
     "pitft-touch": "^0.0.6",
