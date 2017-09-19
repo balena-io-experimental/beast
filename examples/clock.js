@@ -58,7 +58,12 @@ var update = function() {
 
     fb.color(1, 1, 1);
     fb.circle(xMax/2, yMax/2, radius * 0.85);
-    fb.image(xMax/2 - 16, yMax/2 + radius * 0.50 - 16, "examples/image.png");
+    try {
+        fb.image(xMax/2 - 16, yMax/2 + radius * 0.50 - 16, "examples/image.png");
+    }
+    catch(error) {
+        console.log(error);
+    }
     fb.color(1, 0, 0);
     hand(fb, 0, 0, hours/12 * 360, radius * 0.6, radius * 0.05);
     hand(fb, 0, 0, minutes/60 * 360, radius * 0.8, radius * 0.05);
