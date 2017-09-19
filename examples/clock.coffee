@@ -51,7 +51,7 @@ update = ->
     try
         rightNow = new moment().tz(process.env.TIMEZONE)
         fb.font("fantasy", 40)
-        fb.text(xMax/2, yMax/3, process.env.TIMEZONE?, true, rotate)
+        fb.text(xMax/2, yMax*2/3, process.env.TIMEZONE, true, rotate)
     catch error
         console.log(error)
         rightNow = new moment()
