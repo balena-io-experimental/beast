@@ -32,7 +32,7 @@ drawText = (text) ->
   fb.text(originX, originY, text, true)
 
 update = ->
-  rightNow = moment()
+  rightNow = moment().tz('Europe/Athens')
   fb.clear()
   secondsAngle = rightNow.seconds() * 6
   minutesAngle = rightNow.minutes() * 6
