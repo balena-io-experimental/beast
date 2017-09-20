@@ -43,7 +43,7 @@ drawHand = (originX, originY, length, width, angle) ->
     yResolution - relativeLocationY,
     width/2
   )
-  [locationX, locationY]
+  [originX + deltaX, originY + deltaY]
 
 drawText = (text) ->
   locationX = totalX / 2
