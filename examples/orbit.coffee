@@ -45,8 +45,8 @@ update = ->
   minutesAngle = (rightNow/60)*6
   hoursAngle = (rightNow/3600)*30
   fb.clear()
-  end = drawHand(totalX / 2, totalY / 2, smallestAxis / 2, secondsAngle)
-  end = drawHand(end[0], end[1], smallestAxis / 4, secondsAngle)
+  end = drawHand(totalX / 2, totalY / 2, smallestAxis / 4, secondsAngle)
   end = drawHand(end[0], end[1], smallestAxis / 8, secondsAngle)
+  end = drawHand(end[0], end[1], smallestAxis / 16, secondsAngle)
 
 setInterval(update, 100)
