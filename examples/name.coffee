@@ -1,6 +1,5 @@
 fb = require("pitft")("/dev/fb1", true)
 fb.clear()
-
 xMax = fb.size().width
 yMax = fb.size().height
 

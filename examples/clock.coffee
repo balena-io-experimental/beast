@@ -1,11 +1,10 @@
-pitft = require("pitft")
 moment = require("moment-timezone")
-fb = pitft("/dev/fb1", true)
 
+fb = require("pitft")("/dev/fb1", true)
 fb.clear()
-
 xMax = fb.size().width
 yMax = fb.size().height
+
 radius = yMax/2 - 10
 RA = 180/Math.PI
 
