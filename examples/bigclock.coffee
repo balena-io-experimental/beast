@@ -35,10 +35,8 @@ drawHand = (length, width, angle) ->
   fb.circle(originX + deltaX, originY + deltaY, (width * smallestAxis) / 2)
 
 drawText = (text) ->
-  relativeLocationX = centreX - xOffset
-  relativeLocationY = centreY - yOffset
   fb.font("fantasy", totalY/6)
-  fb.text(relativeLocationX, relativeLocationY, text, true)
+  fb.text(originX, originY, text, true)
 
 update = ->
   rightNow = moment()
