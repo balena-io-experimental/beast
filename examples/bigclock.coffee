@@ -2,7 +2,7 @@ _ = require('lodash')
 moment = require('moment')
 radians = require('degrees-radians')
 
-fb = require("pitft")("/dev/fb1", true)
+fb = require('pitft')('/dev/fb1', true)
 fb.clear()
 xResolution = fb.size().width
 yResolution = fb.size().height
@@ -16,26 +16,19 @@ row = Math.floor(index / columns)
 
 totalX = xResolution * columns
 totalY = yResolution * rows
-xOffset = column * xResolution
-yOffset = row * yResolution
-centreX = totalX / 2
-centreY = totalY / 2
-originX = centreX - xOffset
-originY = centreY - yOffset
+originX = (totalX / 2) - (column * xResolution)
+originY = (totalY / 2) - (row * yResolution)
 
 drawHand = (length, width, angle) ->
   deltaX = - Math.sin(radians(-angle)) * totalX * length * 0.5
   deltaY = - Math.cos(radians(-angle)) * totalY * length * 0.5
-  relativeLocationX = originX + deltaX
-  relativeLocationY = originY + deltaY
-
   lineWidth = width * Math.min(totalY, totalX)
   fb.line(originX, originY, originX + deltaX, originY + deltaY, lineWidth)
   fb.circle(originX, originY, lineWidth / 2)
   fb.circle(originX + deltaX, originY + deltaY, lineWidth / 2)
 
 drawText = (text) ->
-  fb.font("fantasy", Math.min(totalX, totalY/6))
+  fb.font('fantasy', Math.min(totalX, totalY/6))
   fb.text(originX, originY, text, true)
 
 update = ->
@@ -53,6 +46,5 @@ update = ->
   fb.color(0.5, 0, 0)
   drawHand(0.9, 0.02, secondsAngle)
   fb.blit()
-
 
 setInterval(update, 25)
