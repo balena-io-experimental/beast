@@ -6,7 +6,6 @@ fb = require("pitft")("/dev/fb1", true)
 fb.clear()
 xResolution = fb.size().width
 yResolution = fb.size().height
-minResolution = Math.min(xResolution, yResolution)
 
 snake = JSON.parse(process.env.RASTER_SNAKE)
 index = _.indexOf(snake, process.env.RESIN_DEVICE_UUID)
@@ -17,6 +16,7 @@ row = Math.floor(index / columns)
 
 totalX = xResolution * columns
 totalY = yResolution * rows
+minTotal = Math.min(totalX, totalY)
 
 drawHand = (originX, originY, length, angle) ->
   deltaX = Math.sin(radians(angle)) * length
@@ -42,7 +42,9 @@ drawHand = (originX, originY, length, angle) ->
 update = ->
   rightNow = moment().unix()
   secondsAngle = (rightNow)*6
+  minutesAngle = (rightNow/60)*6
+  hoursAngle = (rightNow/3600)*30
   fb.clear()
-  drawHand(totalX / 2, totalY / 2, minResolution / 2, secondsAngle)
+  drawHand(totalX / 2, totalY / 2, minTotal / 2, secondsAngle)
 
 setInterval(update, 100)
