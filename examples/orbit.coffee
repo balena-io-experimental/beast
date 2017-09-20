@@ -59,5 +59,6 @@ update = ->
   end = drawHand(totalX / 2, totalY / 2, smallestAxis / 4, hoursAngle)
   end = drawHand(end[0], end[1], smallestAxis / 8, minutesAngle)
   end = drawHand(end[0], end[1], smallestAxis / 16, secondsAngle)
+  fb.text(xResolution/2, yResolution/2, rightNow.format('LTS'), true)
 
 setInterval(update, 100)
