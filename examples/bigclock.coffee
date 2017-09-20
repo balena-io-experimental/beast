@@ -22,7 +22,7 @@ drawHand = (originX, originY, length, width, angle) ->
   relativeOriginX = originX - (column * xResolution)
   relativeOriginY = originY - (row * yResolution)
   deltaX = Math.sin(radians(angle)) * length
-  deltaY = 0 - Math.cos(radians(angle)) * length
+  deltaY = Math.cos(radians(angle)) * length
   relativeLocationX = relativeOriginX + deltaX
   relativeLocationY = relativeOriginY + deltaY
 
@@ -50,7 +50,7 @@ drawText = (text) ->
   locationY = totalY / 2
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
-  fb.font("fantasy", totalY/3)
+  fb.font("fantasy", totalY/4)
   fb.text(relativeLocationX, relativeLocationY, text, true)
 
 update = ->
