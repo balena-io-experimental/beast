@@ -18,7 +18,7 @@ totalX = xResolution * columns
 totalY = yResolution * rows
 smallestAxis = Math.min(totalX, totalY)
 
-drawHand = (originX, originY, length, angle) ->
+drawHand = (originX, originY, length, width, angle) ->
   relativeOriginX = originX - (column * xResolution)
   relativeOriginY = originY - (row * yResolution)
   deltaX = Math.sin(radians(angle)) * length
@@ -31,17 +31,17 @@ drawHand = (originX, originY, length, angle) ->
     yResolution - relativeOriginY,
     xResolution - relativeLocationX,
     yResolution - relativeLocationY,
-    10
+    width
   )
   fb.circle(
     xResolution - relativeOriginX,
     yResolution - relativeOriginY,
-    5
+    width/2
   )
   fb.circle(
     xResolution - relativeLocationX,
     yResolution - relativeLocationY,
-    5
+    width/2
   )
   [locationX, locationY]
 
@@ -64,10 +64,10 @@ update = ->
   fb.color(0.5, 0.5, 0.5)
   drawText(rightNow.format('LTS'))
   fb.color(1, 1, 1)
-  drawHand(origin[0], origin[1], smallestAxis / 4, hoursAngle)
-  drawHand(origin[0], origin[1], smallestAxis / 2, minutesAngle)
+  drawHand(origin[0], origin[1], smallestAxis / 4, smallestAxis / 40, hoursAngle)
+  drawHand(origin[0], origin[1], smallestAxis / 2, smallestAxis / 40, minutesAngle)
   fb.color(0.5, 0, 0)
-  drawHand(origin[0], origin[1], smallestAxis / 2, secondsAngle)
+  drawHand(origin[0], origin[1], smallestAxis / 2, smallestAxis / 80, secondsAngle)
   fb.blit()
 
 setInterval(update, 25)
