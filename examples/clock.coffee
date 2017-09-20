@@ -34,6 +34,8 @@ hand = (_fb, x, y, angle, length, width) ->
     y1 = yMax/2 - Math.cos(angle/RA) * length
 
     fb.line(x0, y0, x1, y1, width)
+    fb.circle(x0, y0, width/2)
+    fb.circle(x1, y1, width/2)
 
 update = ->
     # Display the clock face
@@ -50,7 +52,7 @@ update = ->
         rightNow = new moment().tz(process.env.TIMEZONE)
         city = process.env.TIMEZONE.split('/')[1].replace('_', ' ')
         fb.font("fantasy", 32)
-        fb.text(xMax/2, yMax*0.73, city, true)
+        fb.text(xMax/2, yMax*0.27, city, true)
     else
         rightNow = new moment()
 
