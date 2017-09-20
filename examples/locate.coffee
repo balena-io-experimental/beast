@@ -5,7 +5,8 @@ fb.clear()
 xMax = fb.size().width
 yMax = fb.size().height
 
-index = _.indexOf(JSON.parse(process.env.RASTER_SNAKE), process.env.RESIN_DEVICE_UUID)
+snake = JSON.parse(process.env.RASTER_SNAKE)
+index = _.indexOf(snake, process.env.RESIN_DEVICE_UUID)
 columns = parseInt(process.env.RASTER_COLUMNS, 10)
 column = index % columns
 row = Math.floor(index / columns)
