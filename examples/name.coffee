@@ -6,9 +6,9 @@ yMax = fb.size().height
 update = ->
   fb.color(1, 1, 1)
   fb.font("fantasy", 40)
-  fb.text(xMax/2, yMax*2/3, process.env.RESIN_DEVICE_NAME_AT_INIT, true, 180)
+  fb.text(xMax/2, yMax*2/3, process.env.RESIN_DEVICE_NAME_AT_INIT, true)
   fb.font("fantasy", 20)
-  fb.text(xMax/2, yMax*1/3, process.env.RESIN_DEVICE_UUID, true, 180)
+  fb.text(xMax/2, yMax*1/3, process.env.RESIN_DEVICE_UUID, true)
   fb.blit()
 
 setInterval(update, 1000)

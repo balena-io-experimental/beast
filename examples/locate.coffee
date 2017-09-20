@@ -14,7 +14,7 @@ row = Math.floor(index / columns)
 update = ->
   fb.color(1, 1, 1)
   fb.font("fantasy", 40)
-  fb.text(xMax/2, yMax/2, "(#{column}, #{row})", true, 180)
+  fb.text(xMax/2, yMax/2, "(#{column}, #{row})", true)
   fb.blit()
 
 setInterval(update, 1000)
