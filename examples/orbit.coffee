@@ -19,19 +19,16 @@ totalY = yResolution * rows
 update = ->
   rightNow = moment().unix()
   secondsAngle = rightNow*6
-  deltaX = Math.sin(secondsAngle) * totalX / 2
-  deltaY = Math.cos(secondsAngle) * totalY / 2
-  originX = totalX / 2
-  originY = totalY / 2
+  deltaX = Math.sin(secondsAngle) * xResolution / 2
+  deltaY = Math.cos(secondsAngle) * yResolution / 2
+  originX = xResolution / 2
+  originY = yResolution / 2
   locationX = originX + deltaX
   locationY = originY + deltaY
-  relativeOriginX = originX - (column * xResolution)
-  relativeOriginY = originY - (row * yResolution)
-  relativeLocationX = locationX - (column * xResolution)
-  relativeLocationY = locationY - (column * yResolution)
 
+  fb.clear()
   fb.color(1, 1, 1)
-  fb.line(relativeLocationX, relativeLocationY, relativeOriginX, relativeOriginY, 10)
+  fb.line(locationX, locationY, originX, originY, 10)
   fb.blit()
 
 setInterval(update, 100)
