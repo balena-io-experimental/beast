@@ -52,7 +52,7 @@ update = ->
         rightNow = new moment().tz(process.env.TIMEZONE)
         city = process.env.TIMEZONE.split('/')[1].replace('_', ' ')
         fb.font("fantasy", 32)
-        fb.text(xMax/2, yMax*0.27, city, true)
+        fb.text(xMax/2, yMax*0.7, city, true)
     else
         rightNow = new moment()
 
