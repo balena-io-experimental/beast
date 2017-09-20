@@ -1,5 +1,5 @@
 _ = require('lodash')
-moment = require('moment')
+moment = require('moment-timezone')
 radians = require('degrees-radians')
 
 fb = require('pitft')('/dev/fb1', true)
