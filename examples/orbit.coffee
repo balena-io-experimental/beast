@@ -48,6 +48,16 @@ drawHand = (originX, originY, length, angle) ->
   )
   [locationX, locationY]
 
+drawText = (text) ->
+  locationX = totalX / 2
+  locationY = totalY / 2
+  relativeLocationX = locationX - (column * xResolution)
+  relativeLocationY = locationY - (row * yResolution)
+  size = smallestAxis/500
+  fb.color(0.5, 0.5, 0.5)
+  fb.font("fantasy", size)
+  fb.text(relativeLocationX, relativeLocationY, text, true, 180)
+
 update = ->
   rightNow = moment()
   secondsAngle = rightNow.seconds() * 6
@@ -58,8 +68,7 @@ update = ->
   end = drawHand(totalX / 2, totalY / 2, smallestAxis / 4, hoursAngle)
   end = drawHand(end[0], end[1], smallestAxis / 8, minutesAngle)
   end = drawHand(end[0], end[1], smallestAxis / 16, secondsAngle)
-  fb.font("fantasy", 32)
-  fb.text(xResolution/2, yResolution/2, rightNow.format('LTS'), true, 180)
+  drawText(rightNow.format('LTS'))
   fb.blit()
 
 setInterval(update, 100)
