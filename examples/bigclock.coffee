@@ -16,7 +16,6 @@ row = Math.floor(index / columns)
 
 totalX = xResolution * columns
 totalY = yResolution * rows
-smallestAxis = Math.min(totalX, totalY)
 xOffset = column * xResolution
 yOffset = row * yResolution
 centreX = totalX / 2
@@ -25,21 +24,18 @@ originX = centreX - xOffset
 originY = centreY - yOffset
 
 drawHand = (length, width, angle) ->
-  deltaX = - Math.sin(radians(-angle)) * (smallestAxis * length * 0.5)
-  deltaY = - Math.cos(radians(-angle)) * (smallestAxis * length * 0.5)
+  deltaX = - Math.sin(radians(-angle)) * totalX * length * 0.5
+  deltaY = - Math.cos(radians(-angle)) * totalY * length * 0.5
   relativeLocationX = originX + deltaX
   relativeLocationY = originY + deltaY
 
-  fb.line(
-    originX, originY,
-    originX + deltaX, originY + deltaY,
-    width * smallestAxis
-  )
-  fb.circle(originX, originY, (width * smallestAxis) / 2)
-  fb.circle(originX + deltaX, originY + deltaY, (width * smallestAxis) / 2)
+  lineWidth = width * Math.min(totalY, totalX)
+  fb.line(originX, originY, originX + deltaX, originY + deltaY, lineWidth)
+  fb.circle(originX, originY, lineWidth / 2)
+  fb.circle(originX + deltaX, originY + deltaY, lineWidth / 2)
 
 drawText = (text) ->
-  fb.font("fantasy", Math.min(totalX)) #totalY/6
+  fb.font("fantasy", Math.min(totalX, totalY/6))
   fb.text(originX, originY, text, true)
 
 update = ->
