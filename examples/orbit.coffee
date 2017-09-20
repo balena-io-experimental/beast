@@ -33,7 +33,13 @@ update = ->
 
   fb.clear()
   fb.color(1, 1, 1)
-  fb.line(relativeOriginX, relativeOriginY, relativeLocationX, relativeLocationY, 10)
+  fb.line(
+    xResolution - relativeOriginX,
+    yResolution - relativeOriginY,
+    xResolution - relativeLocationX,
+    yResolution - relativeLocationY,
+    10
+  )
   fb.blit()
 
 setInterval(update, 100)
