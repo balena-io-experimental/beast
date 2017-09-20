@@ -54,4 +54,5 @@ update = ->
   drawHand(0.9, 0.02, secondsAngle)
   fb.blit()
 
+
 setInterval(update, 25)
