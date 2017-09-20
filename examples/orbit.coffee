@@ -50,10 +50,11 @@ drawHand = (originX, originY, length, angle) ->
   [locationX, locationY]
 
 update = ->
-  rightNow = moment().unix()
-  secondsAngle = (rightNow)*6
-  minutesAngle = (rightNow/60)*6
-  hoursAngle = (rightNow/3600)*30
+  rightNow = moment()
+  secondsAngle = (rightNow.seconds())*6
+  minutesAngle = (rightNow.minutes())*6
+  hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
+  hoursAngle = hourProgression*6
   fb.clear()
   end = drawHand(totalX / 2, totalY / 2, smallestAxis / 4, hoursAngle)
   end = drawHand(end[0], end[1], smallestAxis / 8, minutesAngle)
