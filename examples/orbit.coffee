@@ -34,4 +34,4 @@ update = ->
   fb.line(relativeLocationX, relativeLocationY, relativeOriginX, relativeOriginY, 10)
   fb.blit()
 
-setInterval(update, 20)
+setInterval(update, 100)
