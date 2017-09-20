@@ -39,7 +39,7 @@ drawHand = (length, width, angle) ->
   fb.circle(originX + deltaX, originY + deltaY, (width * smallestAxis) / 2)
 
 drawText = (text) ->
-  fb.font("fantasy", totalY/6)
+  fb.font("fantasy", Math.min(totalX)) #totalY/6
   fb.text(originX, originY, text, true)
 
 update = ->
