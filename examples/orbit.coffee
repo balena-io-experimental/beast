@@ -28,7 +28,6 @@ drawHand = (originX, originY, length, angle) ->
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
 
-  fb.color(1, 1, 1)
   fb.line(
     xResolution - relativeOriginX,
     yResolution - relativeOriginY,
@@ -53,22 +52,23 @@ drawText = (text) ->
   locationY = totalY / 2
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
-  fb.color(1, 1, 1)
   fb.font("fantasy", 40)
   fb.text(xResolution/2, yResolution/2, text, true, 180)
 
 update = ->
   rightNow = moment()
+  fb.clear()
   secondsAngle = rightNow.seconds() * 6
   minutesAngle = rightNow.minutes() * 6
   hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
   hoursAngle = hourProgression*6
-  fb.clear()
   origin = [totalX / 2, totalY / 2]
-  drawHand(origin[0], origin[1], smallestAxis / 2, hoursAngle)
-  drawHand(origin[0], origin[1], smallestAxis / 4, minutesAngle)
-  drawHand(origin[0], origin[1], smallestAxis / 8, secondsAngle)
+  fb.color(1, 1, 1)
   drawText(rightNow.format('LTS'))
+  drawHand(origin[0], origin[1], smallestAxis / 4, hoursAngle)
+  drawHand(origin[0], origin[1], smallestAxis / 2, minutesAngle)
+  fb.color(1, 0, 0)
+  drawHand(origin[0], origin[1], smallestAxis / 2, secondsAngle)
   fb.blit()
 
 setInterval(update, 25)
