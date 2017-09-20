@@ -56,10 +56,10 @@ update = ->
 
     # Display the clock hands
     fb.color(0, 0, 0)
-    hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015)
-    hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05)
+    hand(fb, 0, 0, (rightNow.seconds()/60 * 360), radius * 0.8, radius * 0.015)
+    hand(fb, 0, 0, (rightNow.minutes()/60 * 360), radius * 0.8, radius * 0.05)
     hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
-    hand(fb, 0, 0, (hourProgression/60 * 360) + rotate, radius * 0.6, radius * 0.05)
+    hand(fb, 0, 0, (hourProgression/60 * 360), radius * 0.6, radius * 0.05)
 
     # Display the pre-bufferred clock render
     fb.blit()
