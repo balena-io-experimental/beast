@@ -18,7 +18,7 @@ totalY = yResolution * rows
 
 update = ->
   rightNow = moment().unix()
-  secondsAngle = rightNow*6
+  secondsAngle = (rightNow%60)*6
   deltaX = Math.sin(secondsAngle) * xResolution / 2
   deltaY = Math.cos(secondsAngle) * yResolution / 2
   originX = xResolution / 2
