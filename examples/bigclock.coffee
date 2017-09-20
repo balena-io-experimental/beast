@@ -19,8 +19,8 @@ totalY = yResolution * rows
 smallestAxis = Math.min(totalX, totalY)
 
 drawHand = (originX, originY, length, width, angle) ->
-  relativeOriginX = originX - (column * xResolution)
-  relativeOriginY = originY - (row * yResolution)
+  relativeOriginX = originX - ((columns - column) * xResolution)
+  relativeOriginY = originY - ((rows - row) * yResolution)
   deltaX = Math.sin(radians(angle)) * length
   deltaY = Math.cos(radians(angle)) * length
   relativeLocationX = relativeOriginX + deltaX
@@ -56,10 +56,10 @@ drawText = (text) ->
 update = ->
   rightNow = moment()
   fb.clear()
-  secondsAngle = rightNow.seconds() * -6
-  minutesAngle = rightNow.minutes() * -6
+  secondsAngle = rightNow.seconds() * 6
+  minutesAngle = rightNow.minutes() * 6
   hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
-  hoursAngle = hourProgression * -6
+  hoursAngle = hourProgression * 6
   origin = [totalX / 2, totalY / 2]
   fb.color(0.5, 0.5, 0.5)
   drawText(rightNow.format('LTS'))
