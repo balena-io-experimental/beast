@@ -50,7 +50,7 @@ update = ->
     if process.env.TIMEZONE?
         rightNow = new moment().tz(process.env.TIMEZONE)
         fb.font("fantasy", 25)
-        fb.text(xMax/2, yMax*0.7, process.env.TIMEZONE, true, rotate)
+        fb.text(xMax/2, yMax*0.7, process.env.TIMEZONE.split('/')[1], true, rotate)
     else
         rightNow = new moment()
 
