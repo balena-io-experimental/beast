@@ -1,5 +1,6 @@
 _ = require('lodash')
 moment = require('moment')
+radians = require('degrees-radians')
 
 fb = require("pitft")("/dev/fb1", true)
 fb.clear()
@@ -21,8 +22,8 @@ RA = 180/Math.PI
 update = ->
   rightNow = moment()
   secondsAngle = rightNow.seconds()*6
-  deltaX = Math.sin(secondsAngle/RA) * xResolution / 2
-  deltaY = Math.cos(secondsAngle/RA) * yResolution / 2
+  deltaX = Math.sin(radians(secondsAngle)) * xResolution / 2
+  deltaY = Math.cos(radians(secondsAngle)) * yResolution / 2
   originX = xResolution / 2
   originY = yResolution / 2
   locationX = originX + deltaX
