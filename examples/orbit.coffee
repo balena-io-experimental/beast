@@ -19,14 +19,12 @@ totalY = yResolution * rows
 smallestAxis = Math.min(totalX, totalY)
 
 drawHand = (originX, originY, length, angle) ->
-  deltaX = Math.sin(radians(angle)) * length
-  deltaY = 0 - Math.cos(radians(angle)) * length
-  locationX = originX + deltaX
-  locationY = originY + deltaY
   relativeOriginX = originX - (column * xResolution)
   relativeOriginY = originY - (row * yResolution)
-  relativeLocationX = locationX - (column * xResolution)
-  relativeLocationY = locationY - (row * yResolution)
+  deltaX = Math.sin(radians(angle)) * length
+  deltaY = 0 - Math.cos(radians(angle)) * length
+  relativeLocationX = relativeOriginX + deltaX
+  relativeLocationY = relativeOriginY + deltaY
 
   fb.line(
     xResolution - relativeOriginX,
@@ -52,7 +50,7 @@ drawText = (text) ->
   locationY = totalY / 2
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
-  fb.font("fantasy", 40)
+  fb.font("fantasy", totalY/3)
   fb.text(relativeLocationX, relativeLocationY, text, true, 180)
 
 update = ->
