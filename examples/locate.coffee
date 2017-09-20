@@ -9,7 +9,9 @@ index = _.indexOf(process.env.RASTER_SNAKE, process.env.RESIN_DEVICE_UUID)
 columns = parseInt(process.env.RASTER_COLUMNS, 10)
 column = index % columns
 row = Math.floor(index / columns)
-console.log(index, columns, column, row)
+console.log(process.env.RASTER_SNAKE)
+console.lo(process.env.RESIN_DEVICE_UUID)
+console.log(':', index, ':', columns, ':', column, ':', row, ':')
 
 update = ->
   fb.color(1, 1, 1)
