@@ -67,7 +67,7 @@ update = ->
   drawText(rightNow.format('LTS'))
   drawHand(origin[0], origin[1], smallestAxis / 4, hoursAngle)
   drawHand(origin[0], origin[1], smallestAxis / 2, minutesAngle)
-  fb.color(1, 0, 0)
+  fb.color(0.5, 0, 0)
   drawHand(origin[0], origin[1], smallestAxis / 2, secondsAngle)
   fb.blit()
 
