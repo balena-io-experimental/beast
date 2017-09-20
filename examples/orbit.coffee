@@ -16,7 +16,7 @@ row = Math.floor(index / columns)
 
 totalX = xResolution * columns
 totalY = yResolution * rows
-minTotal = Math.min(totalX, totalY)
+smallestAxis = Math.min(totalX, totalY)
 
 drawHand = (originX, originY, length, angle) ->
   deltaX = Math.sin(radians(angle)) * length
@@ -45,6 +45,8 @@ update = ->
   minutesAngle = (rightNow/60)*6
   hoursAngle = (rightNow/3600)*30
   fb.clear()
-  drawHand(totalX / 2, totalY / 2, minTotal / 2, secondsAngle)
+  end = drawHand(totalX / 2, totalY / 2, smallestAxis / 2, secondsAngle)
+  end = drawHand(end[0], end[1], smallestAxis / 4, secondsAngle)
+  end = drawHand(end[0], end[1], smallestAxis / 8, secondsAngle)
 
 setInterval(update, 100)
