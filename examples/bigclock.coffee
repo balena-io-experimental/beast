@@ -25,8 +25,8 @@ originX = centreX - xOffset
 originY = centreY - yOffset
 
 drawHand = (length, width, angle) ->
-  deltaX = Math.sin(radians(angle)) * (smallestAxis * length * 0.5)
-  deltaY = Math.cos(radians(angle)) * (smallestAxis * length * 0.5)
+  deltaX = Math.sin(radians(-angle)) * (smallestAxis * length * 0.5)
+  deltaY = Math.cos(radians(-angle)) * (smallestAxis * length * 0.5)
   relativeLocationX = originX + deltaX
   relativeLocationY = originY + deltaY
 
