@@ -36,6 +36,16 @@ drawHand = (originX, originY, length, angle) ->
     yResolution - relativeLocationY,
     10
   )
+  fb.circle(
+    xResolution - relativeOriginX,
+    yResolution - relativeOriginX,
+    5
+  )
+  fb.circle(
+    xResolution - relativeLocationX,
+    yResolution - relativeLocationY,
+    5
+  )
   fb.blit()
   [locationX, locationY]
 
