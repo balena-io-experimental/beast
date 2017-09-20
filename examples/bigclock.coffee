@@ -50,16 +50,16 @@ drawText = (text) ->
   locationY = totalY / 2
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
-  fb.font("fantasy", totalY/4)
+  fb.font("fantasy", totalY/5)
   fb.text(relativeLocationX, relativeLocationY, text, true)
 
 update = ->
   rightNow = moment()
   fb.clear()
-  secondsAngle = rightNow.seconds() * 6
-  minutesAngle = rightNow.minutes() * 6
+  secondsAngle = rightNow.seconds() * -6
+  minutesAngle = rightNow.minutes() * -6
   hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
-  hoursAngle = hourProgression*6
+  hoursAngle = hourProgression * -6
   origin = [totalX / 2, totalY / 2]
   fb.color(0.5, 0.5, 0.5)
   drawText(rightNow.format('LTS'))
