@@ -6,6 +6,7 @@ fb = require("pitft")("/dev/fb1", true)
 fb.clear()
 xResolution = fb.size().width
 yResolution = fb.size().height
+minResolution = Math.min(xResolution, yResolution)
 
 snake = JSON.parse(process.env.RASTER_SNAKE)
 index = _.indexOf(snake, process.env.RESIN_DEVICE_UUID)
@@ -17,13 +18,9 @@ row = Math.floor(index / columns)
 totalX = xResolution * columns
 totalY = yResolution * rows
 
-update = ->
-  rightNow = moment()
-  secondsAngle = rightNow.seconds()*6
-  deltaX = Math.sin(radians(secondsAngle)) * totalX / 2
-  deltaY = Math.cos(radians(secondsAngle)) * totalY / 2
-  originX = totalX / 2
-  originY = totalY / 2
+drawHand = (originX, originY, length, angle) ->
+  deltaX = Math.sin(radians(angle)) * length
+  deltaY = Math.cos(radians(angle)) * length
   locationX = originX + deltaX
   locationY = originY + deltaY
   relativeOriginX = originX - (column * xResolution)
@@ -31,7 +28,6 @@ update = ->
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
 
-  fb.clear()
   fb.color(1, 1, 1)
   fb.line(
     xResolution - relativeOriginX,
@@ -41,5 +37,12 @@ update = ->
     10
   )
   fb.blit()
+  [locationX, locationY]
+
+update = ->
+  rightNow = moment().unix()
+  secondsAngle = (rightNow)*6
+  fb.clear()
+  drawHand(totalX / 2, totalY / 2, minResolution / 2, secondsAngle)
 
 setInterval(update, 100)
