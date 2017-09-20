@@ -13,4 +13,4 @@ update = ->
   fb.text(xMax/2, yMax*1/3, "set the EXAMPLE environment variable.", true, 180)
   fb.blit()
 
-setInterval(update, 100)
+setInterval(update, 1000)

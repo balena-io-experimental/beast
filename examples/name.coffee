@@ -1,5 +1,4 @@
 fb = require("pitft")("/dev/fb1", true)
-
 fb.clear()
 
 xMax = fb.size().width
@@ -13,4 +12,4 @@ update = ->
   fb.text(xMax/2, yMax*1/3, process.env.RESIN_DEVICE_UUID, true, 180)
   fb.blit()
 
-setInterval(update, 100)
+setInterval(update, 1000)
