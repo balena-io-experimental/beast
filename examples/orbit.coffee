@@ -17,15 +17,13 @@ row = Math.floor(index / columns)
 totalX = xResolution * columns
 totalY = yResolution * rows
 
-RA = 180/Math.PI
-
 update = ->
   rightNow = moment()
   secondsAngle = rightNow.seconds()*6
-  deltaX = Math.sin(radians(secondsAngle)) * xResolution / 2
-  deltaY = Math.cos(radians(secondsAngle)) * yResolution / 2
-  originX = xResolution / 2
-  originY = yResolution / 2
+  deltaX = Math.sin(radians(secondsAngle)) * totalX / 2
+  deltaY = Math.cos(radians(secondsAngle)) * totalY / 2
+  originX = totalX / 2
+  originY = totalY / 2
   locationX = originX + deltaX
   locationY = originY + deltaY
   relativeOriginX = originX - (row * xResolution)
