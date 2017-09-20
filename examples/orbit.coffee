@@ -26,10 +26,10 @@ update = ->
   originY = totalY / 2
   locationX = originX + deltaX
   locationY = originY + deltaY
-  relativeOriginX = originX - (row * xResolution)
-  relativeOriginY = originY - (column * yResolution)
-  relativeLocationX = locationX - (row * xResolution)
-  relativeLocationY = locationY - (column * yResolution)
+  relativeOriginX = originX - (column * xResolution)
+  relativeOriginY = originY - (row * yResolution)
+  relativeLocationX = locationX - (column * xResolution)
+  relativeLocationY = locationY - (row * yResolution)
 
   fb.clear()
   fb.color(1, 1, 1)
