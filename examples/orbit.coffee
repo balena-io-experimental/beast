@@ -25,10 +25,14 @@ update = ->
   originY = yResolution / 2
   locationX = originX + deltaX
   locationY = originY + deltaY
+  relativeOriginX = originX - (row * xResolution)
+  relativeOriginY = originY - (column * yResolution)
+  relativeLocationX = locationX - (row * xResolution)
+  relativeLocationY = locationY - (column * yResolution)
 
   fb.clear()
   fb.color(1, 1, 1)
-  fb.line(locationX, locationY, originX, originY, 10)
+  fb.line(relativeOriginX, relativeOriginY, relativeLocationX, relativeLocationY, 10)
   fb.blit()
 
 setInterval(update, 100)
