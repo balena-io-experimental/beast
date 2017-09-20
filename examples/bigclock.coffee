@@ -48,8 +48,8 @@ drawHand = (originX, originY, length, width, angle) ->
 drawText = (text) ->
   locationX = totalX / 2
   locationY = totalY / 2
-  relativeLocationX = locationX - (column * xResolution)
-  relativeLocationY = locationY - (row * yResolution)
+  relativeLocationX = locationX - ((columns - column) * xResolution)
+  relativeLocationY = locationY - ((rows - row) * yResolution)
   fb.font("fantasy", totalY/5)
   fb.text(relativeLocationX, relativeLocationY, text, true)
 
