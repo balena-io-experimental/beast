@@ -20,7 +20,7 @@ smallestAxis = Math.min(totalX, totalY)
 
 drawHand = (originX, originY, length, angle) ->
   deltaX = Math.sin(radians(angle)) * length
-  deltaY = Math.cos(radians(angle)) * length
+  deltaY = 0 - Math.cos(radians(angle)) * length
   locationX = originX + deltaX
   locationY = originY + deltaY
   relativeOriginX = originX - (column * xResolution)
