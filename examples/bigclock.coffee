@@ -26,11 +26,15 @@ originY = centreY - yOffset
 
 drawHand = (length, width, angle) ->
   deltaX = Math.sin(radians(-angle)) * (smallestAxis * length * 0.5)
-  deltaY = Math.cos(radians(-angle)) * (smallestAxis * length * 0.5)
+  deltaY = - Math.cos(radians(-angle)) * (smallestAxis * length * 0.5)
   relativeLocationX = originX + deltaX
   relativeLocationY = originY + deltaY
 
-  fb.line(originX, originY, originX + deltaX, originY + deltaY, width * smallestAxis)
+  fb.line(
+    originX, originY,
+    originX + deltaX, originY + deltaY,
+    width * smallestAxis
+  )
   fb.circle(originX, originY, (width * smallestAxis) / 2)
   fb.circle(originX + deltaX, originY + deltaY, (width * smallestAxis) / 2)
 
@@ -49,9 +53,9 @@ update = ->
   drawText(rightNow.format('LTS'))
   fb.color(1, 1, 1)
   drawHand(0.5, 0.03, hoursAngle)
-  drawHand(1, 0.03, minutesAngle)
+  drawHand(0.9, 0.03, minutesAngle)
   fb.color(0.5, 0, 0)
-  drawHand(1, 0.02, secondsAngle)
+  drawHand(0.9, 0.02, secondsAngle)
   fb.blit()
 
 setInterval(update, 25)
