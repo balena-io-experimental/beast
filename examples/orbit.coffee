@@ -66,7 +66,7 @@ update = ->
   fb.clear()
   end = [totalX / 2, totalY / 2]
   end = drawHand(end[0], end[1], smallestAxis / 2, hoursAngle)
-  end = drawHand(end[0], end[1], smallestAxis / 4 minutesAngle)
+  end = drawHand(end[0], end[1], smallestAxis / 4, minutesAngle)
   end = drawHand(end[0], end[1], smallestAxis / 8, secondsAngle)
   drawText(rightNow.format('LTS'))
   fb.blit()
