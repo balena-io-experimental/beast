@@ -64,9 +64,10 @@ update = ->
   hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
   hoursAngle = hourProgression*6
   fb.clear()
-  end = drawHand(totalX / 2, totalY / 2, smallestAxis / 4, hoursAngle)
-  end = drawHand(end[0], end[1], smallestAxis / 8, minutesAngle)
-  end = drawHand(end[0], end[1], smallestAxis / 16, secondsAngle)
+  end = [totalX/2, totalY/2]
+  end = drawHand(emd[0], end[1], smallestAxis * 4 / 7, hoursAngle)
+  end = drawHand(end[0], end[1], smallestAxis * 2 / 7, minutesAngle)
+  end = drawHand(end[0], end[1], smallestAxis * 1 / 7, secondsAngle)
   drawText(rightNow.format('LTS'))
   fb.blit()
 
