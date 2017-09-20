@@ -39,6 +39,7 @@ hand = (_fb, x, y, angle, length, width) ->
 update = ->
     rotate = 180
 
+    # Display the clock face
     fb.color(1, 1, 1)
     fb.circle(xMax/2, yMax/2, radius * 0.85)
     try
@@ -46,21 +47,24 @@ update = ->
     catch error
         console.log(error)
 
+    # Calculate and display the timezone and time
     fb.color(0, 0, 0)
     if process.env.TIMEZONE?
         rightNow = new moment().tz(process.env.TIMEZONE)
-        fb.font("fantasy", 32)
         city = process.env.TIMEZONE.split('/')[1].replace('_', ' ')
+        fb.font("fantasy", 32)
         fb.text(xMax/2, yMax*0.73, city, true, rotate)
     else
         rightNow = new moment()
 
+    # Display the clock hands
     fb.color(0, 0, 0)
     hand(fb, 0, 0, (rightNow.seconds()/60 * 360) + rotate, radius * 0.8, radius * 0.015)
     hand(fb, 0, 0, (rightNow.minutes()/60 * 360) + rotate, radius * 0.8, radius * 0.05)
     hourProgression = (rightNow.hours() * 5) + (rightNow.minutes() / 12)
     hand(fb, 0, 0, (hourProgression/60 * 360) + rotate, radius * 0.6, radius * 0.05)
 
+    # Display the pre-bufferred clock render
     fb.blit()
 
 drawDial()
