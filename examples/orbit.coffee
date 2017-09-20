@@ -71,4 +71,4 @@ update = ->
   drawText(rightNow.format('LTS'))
   fb.blit()
 
-setInterval(update, 50)
+setInterval(update, 25)
