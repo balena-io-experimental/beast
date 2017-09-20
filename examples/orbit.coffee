@@ -17,8 +17,8 @@ totalX = xResolution * columns
 totalY = yResolution * rows
 
 update = ->
-  rightNow = moment().unix()
-  secondsAngle = (rightNow%60)*6
+  rightNow = moment()
+  secondsAngle = rightNow.seconds()*6
   deltaX = Math.sin(secondsAngle) * xResolution / 2
   deltaY = Math.cos(secondsAngle) * yResolution / 2
   originX = xResolution / 2
