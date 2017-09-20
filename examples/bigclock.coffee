@@ -51,7 +51,7 @@ drawText = (text) ->
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
   fb.font("fantasy", totalY/3)
-  fb.text(relativeLocationX, relativeLocationY, text, true, 180)
+  fb.text(relativeLocationX, relativeLocationY, text, true)
 
 update = ->
   rightNow = moment()
