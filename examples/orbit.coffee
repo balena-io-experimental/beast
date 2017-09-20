@@ -54,7 +54,7 @@ drawText = (text) ->
   relativeLocationX = locationX - (column * xResolution)
   relativeLocationY = locationY - (row * yResolution)
   size = xResolution/500
-  fb.color(0.5, 0.5, 0.5)
+  fb.color(1, 1, 1)
   fb.font("fantasy", size)
   fb.text(relativeLocationX, relativeLocationY, text, true, 180)
 
