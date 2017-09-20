@@ -38,7 +38,7 @@ drawHand = (originX, originY, length, angle) ->
   )
   fb.circle(
     xResolution - relativeOriginX,
-    yResolution - relativeOriginX,
+    yResolution - relativeOriginY,
     5
   )
   fb.circle(
