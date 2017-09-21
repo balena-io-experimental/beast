@@ -32,7 +32,7 @@ render = ->
   fb.blit()
 
 calculate = ->
-  console.log("Calculating #{ecosystem[row][col].length}")
+  console.log("Calculating #{ecosystem[0][0].length}")
   for col in [0...cols]
     for row in [0...rows]
       tick = ecosystem[row][col].length
