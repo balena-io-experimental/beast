@@ -20,11 +20,16 @@ render = ->
   fb.color(1, 1, 1)
   for column in [0...columns]
     for row in [0...rows]
-      if ecosystem[row][column]
-        fb.rect(column * width, row * height, width, height, true)
+      fb.rect(
+        column * width, row * height,
+        width, height,
+        ecosystem[row][column]
+      )
   fb.blit()
 
 calculate = ->
+  for column in [0...columns]
+    for row in [0...rows]
 
 
-setInterval(render, 20)
+setInterval(render, 1000)
