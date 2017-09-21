@@ -23,15 +23,15 @@ setup = (force = false) ->
 
 render = ->
   fb.clear()
-  rightNow = moment()
-  if rightNow.seconds() != 0
-    console.log("Rendering #{rightNow.seconds()}")
+  second = moment().seconds()
+  if second != 0
+    console.log("Rendering #{second}")
     fb.color(1, 1, 1)
     for col in [0...cols]
       for row in [0...rows]
         fb.rect(
           col * width, row * height, width, height,
-          ecosystem[row][col][rightNoßw.seconds()]
+          ecosystem[row][col][second]
         )
     fb.blit()
 
