@@ -38,7 +38,7 @@ calculate = ->
             if ecosystem[focusRow][focusColumn][tick-1]
               sum++
       if sum > 0
-        console.log(sum)
+        console.log(tick, sum)
       if sum < 2
         ecosystem[row][column][tick] = false
       else if sum == 2
