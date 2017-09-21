@@ -13,7 +13,6 @@ for row in [0...rows]
   ecosystem[row] ?= []
   for column in [0...columns]
     ecosystem[row][column] ?= [Math.random() < 0.5]
-console.log(ecosystem)
 
 render = ->
   fb.clear()
@@ -23,7 +22,7 @@ render = ->
       fb.rect(
         column * width, row * height,
         width, height,
-        ecosystem[row][column]
+        ecosystem[row][column][ecosystem[row][column].length - 1]
       )
   fb.blit()
 
