@@ -72,7 +72,10 @@ calculate = ->
           ecosystem[tick][row][col] = false
     process.nextTick(calculate)
 
-
+app.get('/', (request, response) ->
+  response.send('Hello world!')
+)
+server = app.listen(80)
 setInterval(setup, 330)
 setInterval(render, 50)
 setup()
