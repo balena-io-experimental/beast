@@ -12,9 +12,11 @@ width = xResolution / cols
 height = yResolution / rows
 
 ecosystem = []
+rendered = 0
 
 setup = (force = false) ->
   if force or moment().seconds() == 0
+    rendered = 0
     ecosystem = []
     for row in [0...rows]
       ecosystem[row] ?= []
@@ -22,9 +24,10 @@ setup = (force = false) ->
         ecosystem[row][col] ?= [Math.random() < 0.5]
 
 render = ->
-  fb.clear()
   second = moment().seconds()
-  if second != 0
+  if second != 0 and second > rendered
+    fb.clear()
+    rendered = second
     console.log("Rendering #{second}")
     fb.color(1, 1, 1)
     for col in [0...cols]
