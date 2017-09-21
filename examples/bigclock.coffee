@@ -28,8 +28,8 @@ drawHand = (length, width, angle) ->
   deltaY = - Math.cos(radians(-angle)) * totalY * length * 0.5
   lineWidth = width * Math.min(totalY, totalX)
   fb.line(originX, originY, originX + deltaX, originY + deltaY, lineWidth)
-  fb.circle(originX, originY, lineWidth / 2)
-  fb.circle(originX + deltaX, originY + deltaY, lineWidth / 2)
+  fb.circle(originX, originY, lineWidth)
+  fb.circle(originX + deltaX, originY + deltaY, lineWidth)
 
 drawText = (text) ->
   fb.font('fantasy', Math.min(totalX, totalY/6))
