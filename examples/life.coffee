@@ -13,8 +13,9 @@ for row in [0...rows]
   ecosystem[row] ?= []
   for column in [0...columns]
     ecosystem[row][column] ?= [Math.random() < 0.5]
+console.log(ecosystem)
 
-update = ->
+render = ->
   fb.clear()
   fb.color(1, 1, 1)
   for column in [0...columns]
@@ -23,4 +24,7 @@ update = ->
         fb.rect(column * width, row * height, width, height, true)
   fb.blit()
 
-setInterval(update, 1000)
+calculate = ->
+
+
+setInterval(render, 20)
