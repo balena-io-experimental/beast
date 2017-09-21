@@ -73,7 +73,7 @@ calculate = ->
     process.nextTick(calculate)
 
 app.get('/', (request, response) ->
-  response.send('Hello world!')
+  response.send("#{request.query.minute}:#{request.query.second}")
 )
 server = app.listen(80)
 setInterval(setup, 330)
