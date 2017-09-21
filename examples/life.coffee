@@ -22,8 +22,8 @@ setup = (force = false) ->
     for row in [0...rows]
       ecosystem[0][row] ?= []
       for col in [0...cols]
-        ecosystem[0][row][col] ?= Math.random() < 0.5
-  calculate()
+        ecosystem[0][row][col] = Math.random() < 0.5
+  process.nextTick(calculate)
 
 render = ->
   tick = moment().seconds()
@@ -43,9 +43,9 @@ render = ->
 calculate = ->
   if ecosystem.length < 60
     console.log("Calculating #{ecosystem.length}")
+    tick = ecosystem.length
     for col in [0...cols]
       for row in [0...rows]
-        tick = ecosystem.length
         sum = 0
         for colDelta in [0...3]
           for rowDelta in [0...3]
@@ -67,6 +67,6 @@ calculate = ->
           ecosystem[tick][row][col] = false
     process.nextTick(calculate)
 
-setup(true)
 setInterval(setup, 330)
 setInterval(render, 50)
+setup(true)
