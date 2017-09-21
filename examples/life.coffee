@@ -22,10 +22,11 @@ setup = (force = false) ->
       ecosystem[row] ?= []
       for col in [0...cols]
         ecosystem[row][col] ?= [Math.random() < 0.5]
+  calculate()
 
 render = ->
   second = moment().seconds()
-  if second != 0 and second > rendered
+  if second > rendered
     fb.clear()
     rendered = second
     console.log("Rendering #{second}")
@@ -63,6 +64,5 @@ calculate = ->
     process.nextTick(calculate)
 
 setup(true)
-setInterval(setup, 100)
-setInterval(render, 20)
-calculate()
+setInterval(setup, 330)
+setInterval(render, 50)
