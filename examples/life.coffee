@@ -72,11 +72,29 @@ calculate = ->
           ecosystem[tick][row][col] = false
     process.nextTick(calculate)
 
-app.get('/', (request, response) ->
-  if parseInt(request.query.minute, 10) == minute
-    response.send("#{request.query.second} - #{request.query.position} - #{request.query.asset}")
+app.get('/', (inbound, outbound) ->
+  requestedMinute = parseInt(inbound.query.minute, 10)
+  requestedSecond = parseInt(inbound.query.second, 10)
+  if requestedMinute == minute and ecosystem.length > requestedSecond
+    if inbound.query.asset == 'row'
+      colIterator = [0...cols]
+      if inbound.query.position == 'first'
+        rowIterator = [0]
+      else
+        rowIterator = [rows]
+    else
+      rowIterator = [0...rows]
+      if inbound.query.position == 'first'
+        colIterator = [0]
+      else
+        colIterator = [cols]
+    outboundArray = []
+    for focusCol in colIterator
+      for focusRow in rowIterator
+        outboundArray.push(ecosystem[requestedSecond][focusRow][focusCol])
+    outbound.send(JSON.stringify(outboundArray))
   else
-    response.send(404)
+    outbound.send(404)
 )
 server = app.listen(80)
 setInterval(setup, 330)
