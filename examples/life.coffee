@@ -14,7 +14,12 @@ height = yResolution / rows
 ecosystem = []
 rendered = 0
 
-setup = (force = false) ->
+logo = () ->
+  fb.clear()
+  fb.image(xResolution/2, yResolution/2, "examples/image.png")
+  fb.blit()
+
+setup = ->
   if force or moment().seconds() == 0
     rendered = 0
     ecosystem = []
@@ -68,4 +73,4 @@ calculate = ->
 
 setInterval(setup, 330)
 setInterval(render, 50)
-setup(true)
+logo()
