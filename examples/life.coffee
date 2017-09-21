@@ -18,49 +18,52 @@ setup = (force = false) ->
   if force or moment().seconds() == 0
     rendered = 0
     ecosystem = []
+    ecosystem[0] = []
     for row in [0...rows]
-      ecosystem[row] ?= []
+      ecosystem[0][row] ?= []
       for col in [0...cols]
-        ecosystem[row][col] ?= [Math.random() < 0.5]
+        ecosystem[0][row][col] ?= Math.random() < 0.5
   calculate()
 
 render = ->
-  second = moment().seconds()
-  if second > rendered
+  tick = moment().seconds()
+  if tick > rendered
     fb.clear()
-    rendered = second
-    console.log("Rendering #{second}")
+    rendered = tick
+    console.log("Rendering #{tick}")
     fb.color(1, 1, 1)
     for col in [0...cols]
       for row in [0...rows]
         fb.rect(
           col * width, row * height, width, height,
-          ecosystem[row][col][second]
+          ecosystem[tick][row][col]
         )
     fb.blit()
 
 calculate = ->
-  if ecosystem[0][0].length < 60
-    console.log("Calculating #{ecosystem[0][0].length}")
+  if ecosystem.length < 60
+    console.log("Calculating #{ecosystem.length}")
     for col in [0...cols]
       for row in [0...rows]
-        tick = ecosystem[row][col].length
+        tick = ecosystem.length
         sum = 0
         for colDelta in [0...3]
           for rowDelta in [0...3]
             if colDelta != 1 or rowDelta != 1
               focusCol = (col + colDelta - 1) %% cols
               focusRow = (row + rowDelta - 1) %% rows
-              if ecosystem[focusRow][focusCol][tick-1]
+              if ecosystem[tick-1][focusRow][focusCol]
                 sum++
+        ecosystem[tick] ?= []
+        ecosystem[tick][row] ?= []
         if sum < 2
-          ecosystem[row][col].push(false)
+          ecosystem[tick][row][col] = false
         else if sum == 2
-          ecosystem[row][col].push(ecosystem[row][col][tick-1])
+          ecosystem[tick][row][col] = ecosystem[tick-1][row][col]
         else if sum == 3
-          ecosystem[row][col].push(true)
+          ecosystem[tick][row][col] = true
         else
-          ecosystem[row][col].push(false)
+          ecosystem[tick][row][col] = false
     process.nextTick(calculate)
 
 setup(true)
