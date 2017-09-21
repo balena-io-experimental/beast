@@ -26,9 +26,4 @@ render = ->
       )
   fb.blit()
 
-calculate = ->
-  for column in [0...columns]
-    for row in [0...rows]
-
-
 setInterval(render, 1000)
