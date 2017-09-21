@@ -20,10 +20,31 @@ render = ->
   for column in [0...columns]
     for row in [0...rows]
       fb.rect(
-        column * width, row * height,
-        width, height,
+        column * width, row * height, width, height,
         ecosystem[row][column][ecosystem[row][column].length - 1]
       )
   fb.blit()
 
-setInterval(render, 1000)
+calculate = ->
+  for column in [0...columns]
+    for row in [0...rows]
+      tick = ecosystem[row][column].length
+      sum = 0
+      for deltaX in [-1...1]
+        for deltaY in [-1...1]
+          if deltaX != 0 or deltaY != 0
+            focusColumn = (column + deltaX) % columns
+            focusRow = (row + deltaY) % rows
+            if ecosystem[focusRow][focusColumn][tick-1]
+              sum += 1
+      if sum < 2
+        ecosystem[row][column][tick] = false
+      else if sum = 2
+        ecosystem[row][column][tick] = ecosystem[row][column][tick-1]
+      else if sum = 3
+        ecosystem[row][column][tick] = true
+      else
+        ecosystem[row][column][tick] = false
+
+setInterval(render, 20)
+setInterval(calculate, 1000)
