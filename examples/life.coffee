@@ -8,6 +8,8 @@ rows = parseInt(process.env.LIFE_ROWS_EACH ? '0')
 width = xResolution / cols
 height = yResolution / rows
 
+rendered = 0
+
 ecosystem = []
 for row in [0...rows]
   ecosystem[row] ?= []
@@ -21,8 +23,9 @@ render = ->
     for row in [0...rows]
       fb.rect(
         col * width, row * height, width, height,
-        ecosystem[row][col][ecosystem[row][col].length - 1]
+        ecosystem[row][col][rendered]
       )
+  rendered++
   fb.blit()
 
 calculate = ->
@@ -46,5 +49,5 @@ calculate = ->
       else
         ecosystem[row][col].push(false)
 
-setInterval(render, 20)
+setInterval(render, 200)
 setInterval(calculate, 100)
