@@ -49,5 +49,5 @@ calculate = ->
       else
         ecosystem[row][col].push(false)
 
-setInterval(render, 200)
-setInterval(calculate, 100)
+setInterval(render, 400)
+setInterval(calculate, 300)
