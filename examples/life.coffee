@@ -44,6 +44,7 @@ calculate = ->
       else if sum == 2
         ecosystem[row][column][tick] = ecosystem[row][column][tick-1]
       else if sum == 3
+        console.log('***')
         ecosystem[row][column][tick] = true
       else
         ecosystem[row][column][tick] = false
