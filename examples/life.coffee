@@ -38,13 +38,13 @@ render = ->
     fb.clear()
     rendered = tick
     console.log("Rendering #{tick}")
+    fb.color(1, 1, 1)
     for col in [0...cols]
       for row in [0...rows]
-        previous = if ecosystem[tick-1][row][col] then 1 else 0
-        current = if ecosystem[tick][row][col] then 1 else 0
-        brightness = (current * blendPoint) + (previous * (1 - blendPoint))
-        fb.color(brightness, brightness, brightness)
-        fb.rect(col * width, row * height, width, height, true)
+        fb.rect(
+          col * width, row * height, width, height,
+          ecosystem[tick][row][col]
+        )
     fb.blit()
 
 calculate = ->
