@@ -73,7 +73,10 @@ calculate = ->
     process.nextTick(calculate)
 
 app.get('/', (request, response) ->
-  response.send("#{request.query.minute}:#{request.query.second}")
+  if parseInt(request.query.minute, 10) == minute
+    response.send("#{request.query.second} - #{request.query.position} - #{request.query.asset}")
+  else
+    response.send(404)
 )
 server = app.listen(80)
 setInterval(setup, 330)
