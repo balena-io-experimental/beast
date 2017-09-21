@@ -3,7 +3,6 @@ moment = require('moment')
 request = require('request-promise')
 express = require('express')
 app = express()
-_ = require('lodash')
 
 fb = require('pitft')('/dev/fb1', true)
 fb.clear()
