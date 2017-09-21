@@ -33,12 +33,11 @@ calculate = ->
       for colDelta in [0...2]
         for rowDelta in [0...2]
           if colDelta != 1 or rowDelta != 1
+            console.log("(#{colDelta}, #{rowDelta})")
             focusCol = (col + colDelta - 1) %% cols
             focusRow = (row + rowDelta - 1) %% rows
             if ecosystem[focusRow][focusCol][tick-1]
               sum++
-      if sum == 3
-        console.log(tick, sum)
       if sum < 2
         ecosystem[row][col].push(false)
       else if sum == 2
