@@ -41,10 +41,8 @@ render = ->
     fb.color(1, 1, 1)
     for col in [0...cols]
       for row in [0...rows]
-        fb.rect(
-          col * width, row * height, width, height,
-          ecosystem[tick][row][col]
-        )
+        if ecosystem[tick][row][col]
+          fb.rect(col * width, row * height, width, height)
     fb.blit()
 
 calculate = ->
