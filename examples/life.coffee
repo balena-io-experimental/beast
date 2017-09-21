@@ -30,23 +30,23 @@ calculate = ->
     for row in [0...rows]
       tick = ecosystem[row][col].length
       sum = 0
-      for colDelta in [-1...1]
-        for rowDelta in [-1...1]
-          if colDelta != 0 or rowDelta != 0
-            focusCol = (col + colDelta) %% cols
-            focusRow = (row + rowDelta) %% rows
+      for colDelta in [0...2]
+        for rowDelta in [0...2]
+          if colDelta != 1 or rowDelta != 1
+            focusCol = (col + colDelta - 1) %% cols
+            focusRow = (row + rowDelta - 1) %% rows
             if ecosystem[focusRow][focusCol][tick-1]
               sum++
       if sum == 3
         console.log(tick, sum)
       if sum < 2
-        ecosystem[row][col][tick] = false
+        ecosystem[row][col].push(false)
       else if sum == 2
-        ecosystem[row][col][tick] = ecosystem[row][col][tick-1]
+        ecosystem[row][col].push(ecosystem[row][col][tick-1])
       else if sum == 3
-        ecosystem[row][col][tick] = true
+        ecosystem[row][col].push(true)
       else
-        ecosystem[row][col][tick] = false
+        ecosystem[row][col].push(false)
 
 setInterval(render, 20)
 setInterval(calculate, 1000)
