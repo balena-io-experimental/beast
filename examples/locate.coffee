@@ -15,6 +15,7 @@ update = ->
   fb.color(1, 1, 1)
   fb.font("fantasy", 40)
   fb.text(xMax/2, yMax/2, "(#{column}, #{row})", true)
+  fb.circle(0, 0, 10)
   fb.blit()
 
 setInterval(update, 1000)
