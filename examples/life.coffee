@@ -44,10 +44,7 @@ render = ->
         current = if ecosystem[tick][row][col] then 1 else 0
         brightness = (current * blendPoint) + (previous * (1 - blendPoint))
         fb.color(brightness, brightness, brightness)
-        fb.rect(
-          col * width, row * height, width, height,
-          ecosystem[tick][row][col]
-        )
+        fb.rect(col * width, row * height, width, height, true)
     fb.blit()
 
 calculate = ->
