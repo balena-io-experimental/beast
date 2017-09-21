@@ -33,8 +33,8 @@ calculate = ->
       for deltaX in [-1...1]
         for deltaY in [-1...1]
           if deltaX != 0 or deltaY != 0
-            focusColumn = (column + deltaX) % columns
-            focusRow = (row + deltaY) % rows
+            focusColumn = (column + deltaX) %% columns
+            focusRow = (row + deltaY) %% rows
             if ecosystem[focusRow][focusColumn][tick-1]
               sum += 1
       if sum < 2
