@@ -3,51 +3,50 @@ fb.clear()
 xResolution = fb.size().width
 yResolution = fb.size().height
 
-columns = parseInt(process.env.LIFE_COLUMNS_EACH ? '0')
+cols = parseInt(process.env.LIFE_COLUMNS_EACH ? '0')
 rows = parseInt(process.env.LIFE_ROWS_EACH ? '0')
-width = xResolution / columns
+width = xResolution / cols
 height = yResolution / rows
 
 ecosystem = []
 for row in [0...rows]
   ecosystem[row] ?= []
-  for column in [0...columns]
-    ecosystem[row][column] ?= [Math.random() < 0.5]
+  for col in [0...cols]
+    ecosystem[row][col] ?= [Math.random() < 0.5]
 
 render = ->
   fb.clear()
   fb.color(1, 1, 1)
-  for column in [0...columns]
+  for col in [0...cols]
     for row in [0...rows]
       fb.rect(
-        column * width, row * height, width, height,
-        ecosystem[row][column][ecosystem[row][column].length - 1]
+        col * width, row * height, width, height,
+        ecosystem[row][col][ecosystem[row][col].length - 1]
       )
   fb.blit()
 
 calculate = ->
-  for column in [0...columns]
+  for col in [0...cols]
     for row in [0...rows]
-      tick = ecosystem[row][column].length
+      tick = ecosystem[row][col].length
       sum = 0
-      for deltaX in [-1...1]
-        for deltaY in [-1...1]
-          if deltaX != 0 or deltaY != 0
-            focusColumn = (column + deltaX) %% columns
-            focusRow = (row + deltaY) %% rows
-            if ecosystem[focusRow][focusColumn][tick-1]
+      for colDelta in [-1...1]
+        for rowDelta in [-1...1]
+          if colDelta != 0 or rowDelta != 0
+            focusCol = (col + colDelta) %% cols
+            focusRow = (row + rowDelta) %% rows
+            if ecosystem[focusRow][focusCol][tick-1]
               sum++
-      if sum > 0
+      if sum == 3
         console.log(tick, sum)
       if sum < 2
-        ecosystem[row][column][tick] = false
+        ecosystem[row][col][tick] = false
       else if sum == 2
-        ecosystem[row][column][tick] = ecosystem[row][column][tick-1]
+        ecosystem[row][col][tick] = ecosystem[row][col][tick-1]
       else if sum == 3
-        console.log('***')
-        ecosystem[row][column][tick] = true
+        ecosystem[row][col][tick] = true
       else
-        ecosystem[row][column][tick] = false
+        ecosystem[row][col][tick] = false
 
 setInterval(render, 20)
 setInterval(calculate, 1000)
