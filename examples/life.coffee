@@ -3,6 +3,7 @@ moment = require('moment')
 request = require('request-promise')
 express = require('express')
 app = express()
+_ = require('lodash')
 
 fb = require('pitft')('/dev/fb1', true)
 fb.clear()
@@ -32,7 +33,6 @@ setup = ->
   process.nextTick(calculate)
 
 render = ->
-  blendPoint = moment().milliseconds() / 1000
   tick = moment().seconds()
   if tick > rendered
     fb.clear()
@@ -72,9 +72,9 @@ calculate = ->
     process.nextTick(calculate)
 
 app.get('/', (inbound, outbound) ->
-  requestedMinute = parseInt(inbound.query.minute, 10)
-  requestedSecond = parseInt(inbound.query.second, 10)
-  if requestedMinute == minute and ecosystem.length > requestedSecond
+  reqMinute = parseInt(inbound.query.minute, 10)
+  reqSecond = parseInt(inbound.query.second, 10)
+  if reqMinute == minute and ecosystem.length > reqSecond
     if inbound.query.asset == 'row'
       colIterator = [0...cols]
       if inbound.query.position == 'first'
@@ -90,7 +90,8 @@ app.get('/', (inbound, outbound) ->
     outboundArray = []
     for focusCol in colIterator
       for focusRow in rowIterator
-        outboundArray.push(ecosystem[requestedSecond][focusRow][focusCol])
+        pushElement = ecosystem[reqSecond][focusRow][focusCol]
+        outboundArray.push(pushElement)
     outbound.send(JSON.stringify(outboundArray))
   else
     outbound.send(404)
