@@ -34,8 +34,6 @@ drawHand = (length, width, angle) ->
 drawText = (text) ->
   fb.font('fantasy', Math.min(totalX, totalY/6))
   fb.text(originX, originY, text, true)
-  fb.font('fantasy', 20)
-  fb.text(xResolution/2, yResolution/2, "(#{originX}, #{originY})", true)
 
 update = ->
   rightNow = moment().tz('Europe/Athens')
