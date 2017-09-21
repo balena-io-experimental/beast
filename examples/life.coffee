@@ -1,5 +1,8 @@
 Promise = require('bluebird')
 moment = require('moment')
+request = require('request-promise')
+express = require('express')
+app = express()
 
 fb = require('pitft')('/dev/fb1', true)
 fb.clear()
@@ -13,9 +16,12 @@ height = yResolution / rows
 
 ecosystem = []
 rendered = 0
+minute = null
 
-setup = (force = false) ->
-  if force or moment().seconds() == 0
+setup = ->
+  rightNow = moment().minutes()
+  if minute != rightNow
+    minute = rightNow
     rendered = 0
     ecosystem = []
     ecosystem[0] = []
@@ -66,6 +72,7 @@ calculate = ->
           ecosystem[tick][row][col] = false
     process.nextTick(calculate)
 
+
 setInterval(setup, 330)
 setInterval(render, 50)
-setup(true)
+setup()
