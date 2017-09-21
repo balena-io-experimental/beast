@@ -1,3 +1,5 @@
+Promise = require('bluebird')
+
 fb = require('pitft')('/dev/fb1', true)
 fb.clear()
 xResolution = fb.size().width
@@ -17,6 +19,7 @@ for row in [0...rows]
     ecosystem[row][col] ?= [Math.random() < 0.5]
 
 render = ->
+  console.log("Rendering #{rendered}")
   fb.clear()
   fb.color(1, 1, 1)
   for col in [0...cols]
@@ -29,6 +32,7 @@ render = ->
   fb.blit()
 
 calculate = ->
+  console.log("Calculating #{ecosystem[row][col].length}")
   for col in [0...cols]
     for row in [0...rows]
       tick = ecosystem[row][col].length
