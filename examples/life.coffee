@@ -31,12 +31,12 @@ render = ->
       for row in [0...rows]
         fb.rect(
           col * width, row * height, width, height,
-          ecosystem[row][col][rightNow.seconds()]
+          ecosystem[row][col][rightNoßw.seconds()]
         )
     fb.blit()
 
 calculate = ->
-  if ecosystem[row][col].length < 60
+  if ecosystem[0][0].length < 60
     console.log("Calculating #{ecosystem[row][col].length}")
     for col in [0...cols]
       for row in [0...rows]
