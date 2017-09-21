@@ -36,8 +36,7 @@ calculate = ->
             focusColumn = (column + deltaX) %% columns
             focusRow = (row + deltaY) %% rows
             if ecosystem[focusRow][focusColumn][tick-1]
-              sum += 1
-              console.log(sum)
+              sum++
       if sum > 0
         console.log(sum)
       if sum < 2
