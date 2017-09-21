@@ -47,7 +47,7 @@ update = ->
   fb.color(1, 1, 1)
   drawHand(0.5, 0.03, hoursAngle)
   drawHand(0.9, 0.03, minutesAngle)
-  fb.color(0.5, 0, 0)
+  fb.color(0.5, 0.5, 0)
   drawHand(0.9, 0.02, secondsAngle)
   fb.blit()
 
