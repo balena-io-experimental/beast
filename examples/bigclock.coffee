@@ -9,15 +9,17 @@ yResolution = fb.size().height
 
 snake = JSON.parse(process.env.RASTER_SNAKE)
 index = _.indexOf(snake, process.env.RESIN_DEVICE_UUID)
+columnGap = parseInt(process.env.RASTER_COLUMN_GAP ? '0', 10)
+rowGap = parseInt(process.env.RASTER_ROW_GAP ? '0', 10)
 columns = parseInt(process.env.RASTER_COLUMNS, 10)
 rows = snake.length / columns
 column = index % columns
 row = Math.floor(index / columns)
 
-totalX = xResolution * columns
-totalY = yResolution * rows
-originX = (totalX / 2) - (column * xResolution)
-originY = (totalY / 2) - (row * yResolution)
+totalX = (xResolution * columns) + (columnGap * (columns - 1))
+totalY = (yResolution * rows) + (rowGap * (rows - 1))
+originX = (totalX / 2) - (column * (xResolution + columnGap))
+originY = (totalY / 2) - (row * (yResolution + columnGap))
 
 drawHand = (length, width, angle) ->
   deltaX = - Math.sin(radians(-angle)) * totalX * length * 0.5
