@@ -22,19 +22,22 @@ setup = (force = false) ->
         ecosystem[row][col] ?= [Math.random() < 0.5]
 
 render = ->
-  if moment().seconds() != 0
-    fb.clear()
+  fb.clear()
+  rightNow = moment()
+  if rightNow.seconds() != 0
+    console.log("Rendering #{rightNow.seconds()}")
     fb.color(1, 1, 1)
     for col in [0...cols]
       for row in [0...rows]
         fb.rect(
           col * width, row * height, width, height,
-          ecosystem[row][col][moment().seconds()]
+          ecosystem[row][col][rightNow.seconds()]
         )
     fb.blit()
 
 calculate = ->
   if ecosystem[row][col].length < 60
+    console.log("Calculating #{ecosystem[row][col].length}")
     for col in [0...cols]
       for row in [0...rows]
         tick = ecosystem[row][col].length
