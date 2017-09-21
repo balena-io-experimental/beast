@@ -18,6 +18,10 @@ row = Math.floor(index / columns)
 
 totalX = (xResolution * columns) + (columnGap * (columns - 1))
 totalY = (yResolution * rows) + (rowGap * (rows - 1))
+originX = (columnGap + xResolution) * ((columns/2) - column)
+originX = originX - (columnGap/2)
+originY = (rowGap + yResolution) * ((rows/2) - row)
+originY - originY - (rowGap/2)
 
 drawHand = (length, width, angle) ->
   deltaX = - Math.sin(radians(-angle)) * totalX * length * 0.5
