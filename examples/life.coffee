@@ -8,8 +8,6 @@ rows = parseInt(process.env.LIFE_ROWS_EACH ? '0')
 width = xResolution / cols
 height = yResolution / rows
 
-rendered = 0
-
 ecosystem = []
 for row in [0...rows]
   ecosystem[row] ?= []
@@ -17,17 +15,15 @@ for row in [0...rows]
     ecosystem[row][col] ?= [Math.random() < 0.5]
 
 render = ->
-  if ecosystem[0][0].length > rendered + 1
-    rendered++
-    fb.clear()
-    fb.color(1, 1, 1)
-    for col in [0...cols]
-      for row in [0...rows]
-        fb.rect(
-          col * width, row * height, width, height,
-          ecosystem[row][col][ecosystem[row][col].rendered - 1]
-        )
-    fb.blit()
+  fb.clear()
+  fb.color(1, 1, 1)
+  for col in [0...cols]
+    for row in [0...rows]
+      fb.rect(
+        col * width, row * height, width, height,
+        ecosystem[row][col][ecosystem[row][col].length - 1]
+      )
+  fb.blit()
 
 calculate = ->
   for col in [0...cols]
@@ -51,4 +47,4 @@ calculate = ->
         ecosystem[row][col].push(false)
 
 setInterval(render, 20)
-setInterval(calculate, 250)
+setInterval(calculate, 100)
