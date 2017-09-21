@@ -30,10 +30,9 @@ calculate = ->
     for row in [0...rows]
       tick = ecosystem[row][col].length
       sum = 0
-      for colDelta in [0...2]
-        for rowDelta in [0...2]
+      for colDelta in [0...3]
+        for rowDelta in [0...3]
           if colDelta != 1 or rowDelta != 1
-            console.log("(#{colDelta}, #{rowDelta})")
             focusCol = (col + colDelta - 1) %% cols
             focusRow = (row + rowDelta - 1) %% rows
             if ecosystem[focusRow][focusCol][tick-1]
