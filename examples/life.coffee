@@ -52,6 +52,7 @@ calculate = ->
             if colDelta != 1 or rowDelta != 1
               focusCol = (col + colDelta - 1) %% cols
               focusRow = (row + rowDelta - 1) %% rows
+              console.log(tick-1, focusRow, focusCol)
               if ecosystem[tick-1][focusRow][focusCol]
                 sum++
         ecosystem[tick] ?= []
