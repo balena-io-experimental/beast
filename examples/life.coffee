@@ -32,14 +32,18 @@ setup = ->
   process.nextTick(calculate)
 
 render = ->
+  blendPoint = moment().milliseconds() / 1000
   tick = moment().seconds()
   if tick > rendered
     fb.clear()
     rendered = tick
     console.log("Rendering #{tick}")
-    fb.color(1, 1, 1)
     for col in [0...cols]
       for row in [0...rows]
+        previous = if ecosystem[tick-1][row][col] then 1 else 0
+        current = if ecosystem[tick][row][col] then 1 else 0
+        brightness = (current * blendPoint) + (previous * (1 - blendPoint))
+        fb.color(brightness, brightness, brightness)
         fb.rect(
           col * width, row * height, width, height,
           ecosystem[tick][row][col]
@@ -96,7 +100,7 @@ app.get('/', (inbound, outbound) ->
   else
     outbound.send(404)
 )
-server = app.listen(80)
+app.listen(80)
 setInterval(setup, 330)
 setInterval(render, 50)
 setup()
