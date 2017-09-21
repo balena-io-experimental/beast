@@ -12,8 +12,9 @@ update = ->
   fb.clear()
   for column in [0...columns]
     for row in [0...rows]
-      fb.color(Math.random(), Math.random(), Math.random())
-      fb.rect(column * width, row * height, width, height, true)
+      if (row + column) % 2 == 0
+        fb.color(Math.random(), Math.random(), Math.random())
+        fb.rect(column * width, row * height, width, height, true)
   fb.blit()
 
 setInterval(update, 1000)
